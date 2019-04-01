@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import AddTodoForm from './AddTodoForm';
 import uuid from 'uuid/v4';
 import Todo from './Todo';
+import './TodoList.css';
 
 
 class TodoList extends Component {
@@ -32,15 +33,15 @@ class TodoList extends Component {
             <div className="TodoList">
                 <AddTodoForm triggerSubmit={this.makeTodo}/>
                 <div className="TodoList-added">
-                    {this.props.todos.map(m => 
-                        <Todo key={m.id}
-                              id={m.id}
-                              img={m.img}
-                              topText={m.topText}
-                              bottomText={m.bottomText} 
+                <ul>
+                    {this.props.todos.map(t => 
+                        <Todo key={t.id}
+                              id={t.id}
+                              todo={t.todo}
                               triggerDelete={this.deleteTodo}
                               />
                         )}
+                </ul>
                 </div>
             </div>
         );
